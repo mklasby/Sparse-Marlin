@@ -91,12 +91,10 @@ sudo nvidia-smi --lock-gpu-clocks=BASE_GPU_CLOCK --lock-memory-clocks=BASE_MEM_C
 If you found this work useful, please consider citing:
 
 ```
-@misc{castro2024sparsemarlin,
-  author = {Castro, Roberto L. and Alistarh, Dan},
-  title = {Sparse-Marlin: Boosting 4-bit inference kernels with 2:4 Sparsity},
-  year = {2024},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/IST-DASLab/Sparse-Marlin}}
+@article{frantar2024marlin,
+  title={MARLIN: Mixed-Precision Auto-Regressive Parallel Inference on Large Language Models},
+  author={Frantar, Elias and Castro, Roberto L and Chen, Jiale and Hoefler, Torsten and Alistarh, Dan},
+  journal={arXiv preprint arXiv:2408.11743},
+  year={2024}
 }
 ```
