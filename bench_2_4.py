@@ -105,6 +105,8 @@ elif "A6000" in gpu:
     SMS = 84
 elif "4090" in gpu:
     SMS = 128
+elif "H100" in gpu:
+    SMS = 144
 else:
     SMS = -1
 
@@ -113,14 +115,14 @@ MODELS = {
     #    (4 * 256 * SMS, 256 * SMS)
     # ],
     "Llama7B": [(4096, 3 * 4096), (4096, 4096), (4096, 2 * 10752), (10752, 4096)],
-    "Llama13B": [(5120, 3 * 5120), (5120, 5120), (5120, 2 * 13568), (13568, 5120)],
-    "Llama33B": [(6656, 3 * 6656), (6656, 6656), (6656, 2 * 17664), (17664, 6656)],
-    "Llama65B": [(8192, 3 * 8192), (8192, 8192), (8192, 2 * 21760), (21760, 8192)],
-    "Falcon180B": [
-        # Note that parallel attention and FC allows layer fusions
-        (14848, 14848 * 5 + 1024),
-        (14848 * 5, 14848),
-    ],
+    # "Llama13B": [(5120, 3 * 5120), (5120, 5120), (5120, 2 * 13568), (13568, 5120)],
+    # "Llama33B": [(6656, 3 * 6656), (6656, 6656), (6656, 2 * 17664), (17664, 6656)],
+    # "Llama65B": [(8192, 3 * 8192), (8192, 8192), (8192, 2 * 21760), (21760, 8192)],
+    # "Falcon180B": [
+    #     # Note that parallel attention and FC allows layer fusions
+    #     (14848, 14848 * 5 + 1024),
+    #     (14848 * 5, 14848),
+    # ],
 }
 
 # Set to true in order to run a more complete benchmark sweep; the default is reproduce README experiments
