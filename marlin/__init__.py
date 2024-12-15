@@ -294,15 +294,22 @@ class Layer_2_4(nn.Module):
         self.k = infeatures
         self.n = outfeatures
         self.groupsize = groupsize
+        self.k_sp = self.k // 2
         self.register_buffer(
-            "B", torch.empty((self.k // 16, self.n * 16 // 8), dtype=torch.int)
+            "B", torch.empty((self.k_sp // 16, self.n * 16 // 8), dtype=torch.int)
         )
+        # self.register_buffer(
+        #     "B", torch.empty((self.k // 16, self.n * 16 // 8), dtype=torch.int)
+        # )
         self.register_buffer(
             "meta", torch.empty((self.n, self.k // 16), dtype=torch.int16)
         )
         self.register_buffer(
-            "s", torch.empty((self.k // groupsize, self.n), dtype=torch.half)
+            "s", torch.empty((self.k_sp // (groupsize // 2), self.n), dtype=torch.half)
         )
+        # self.register_buffer(
+        #     "s", torch.empty((self.k // groupsize, self.n), dtype=torch.half)
+        # )
         # 128 is currently the minimum `tile_n`, hence it gives the maximum workspace size; 16 is the default `max_par`
         self.register_buffer(
             "workspace",
